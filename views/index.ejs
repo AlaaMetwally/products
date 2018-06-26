@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/javascripts/jquery-3.1.1.js"></script>
+    <script src="javascripts/myscript.js"></script>
+    <script src="javascripts/jquery.validate.min.js"></script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Products</h2>
+
+<table id="table">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <%if (products) {
+    products.forEach(function(element) { %>
+    <tr id='<%=element.id%>'>
+    <td><%=element.name%></td>
+    <td><%=element.price%></td>
+    <td><%=element.quantity%></td>
+    <td><input type="button" id="<%= element.id %>" value="Edit" onclick="edit('<%= element.id %>')"></td>
+    <td><input type="button" id="<%= element.id %>" value="Delete" onclick="dele('<%= element.id %>')"></td>
+  </tr>
+    <% });} %>
+</table>
+<form method="post" action="">
+<table style="padding-top:50px">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Add</th>
+      <th>Update</th>
+    </tr>
+  <tr>
+      <td><input placeholder="name" id="name" name="name"></td>
+      <td><input placeholder="price" id="price" name="price"></td>
+      <td><input placeholder="quantity" id="quantity" name="quantity"></td>
+      <td><input type="button" id="click" value="Add" onclick="myFunction('<%= id %>')"></td>
+      <td><input type="button" id="update" value="Update"  disabled="true"></td>
+    </tr>
+  
+  </table></form>
+</body>
+</html>
